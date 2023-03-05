@@ -1,0 +1,46 @@
+﻿@model IEnumerable<GondolinWeb.Areas.Application.Models.Project>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<table class="table table-sm table-color rounded-3 overflow-hidden table-hover">
+    <thead>
+        <tr>
+            <th>
+                <a class="filter-heading" asp-action="Index" asp-route-sortOrder="@ViewData["PNameSortParm"]">@Html.DisplayNameFor(model => model.Name)</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class="text-center">
+                <a class="filter-heading" asp-action="Index" asp-route-sortOrder="@ViewData["PDateSortParm"]">@Html.DisplayNameFor(model => model.RequiredDate)</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                @if (item != null)
+                {
+                    <tr>
+                        <td>
+                            <a asp-controller="Projects" asp-action="Edit" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Name)</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td class="text-center">
+                            @item.RequiredDate?.ToShortDateString()
+                        </td>
+                    </tr>
+                }
+            }
+        }
+        else
+        {
+            <caption class="text-center">No Current Projects</caption>
+        }
+    </tbody>
+</table>
+

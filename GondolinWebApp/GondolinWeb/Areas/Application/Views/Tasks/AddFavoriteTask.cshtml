@@ -1,0 +1,60 @@
+﻿@model GondolinWeb.Areas.Application.Models.Task
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Add Favorite";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add this Task to the Project</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-4 m-auto">
+        <form asp-controller="Tasks" asp-action="AddFavoriteTask" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Name <small class="text-muted">*Required*</small></label>
+                <input asp-for="Name" class="form-control" required/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">
+                    Description 
+                    <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Add further notes if you would like."></i>
+                </label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">
+                    Category
+                    <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Select a category to help filter later. "></i>
+                </label>
+                <select asp-for="CategoryName" class="form-control">
+                    @foreach (var category in ViewBag.Categories)
+                    {
+                        <option value="@category.Name">@category.Name</option>
+                    }
+                </select>
+            </div>
+                <div class="form-group" hidden>
+                    <select asp-for="ProjectID">
+                        <option value="@ViewBag.ProjectID"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                <label asp-for="RequiredDate" class="control-label"> Required By <small class="text-muted">*Required*</small></label>
+                <input asp-for="RequiredDate" type="date" min=@ViewBag.Today max=@ViewBag.Max class="form-control" required />
+                <span asp-validation-for="RequiredDate" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3 ">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a class="btn btn-danger" asp-controller="Projects" asp-action="Edit" asp-route-id="@ViewBag.ProjectID">Cancel <i class="bi bi-exclamation-diamond" data-bs-toggle="tooltip" data-bs-placement="right" title="Will not save changes. Return to Project."></i></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

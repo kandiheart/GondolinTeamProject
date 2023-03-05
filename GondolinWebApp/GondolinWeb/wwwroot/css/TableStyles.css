@@ -1,0 +1,6 @@
+﻿@media (min-width: 768px) {
+    table {
+        table-layout: fixed;
+        width: 100%;
+    }
+}

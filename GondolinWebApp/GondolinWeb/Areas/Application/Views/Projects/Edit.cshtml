@@ -1,0 +1,302 @@
+﻿@model GondolinWeb.Areas.Application.Models.Project
+@using GondolinWeb.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject UserManager<ApplicationUser> userManager;
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Application";
+    ApplicationUser user = await userManager.GetUserAsync(User);
+    var TasksExist = false;
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/TableStyles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/ProjectEdit.css" asp-append-version="true" />
+</head>
+
+<h1>Edit Project
+</h1>
+<hr class="dashboard-line" />
+
+<div class="container w-75">
+    <form asp-action="Edit" asp-route-id="@Model.ID" autocomplete="off">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                    <label asp-for="Name" class="control-label">Name  <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Change the Name of this Project, and use the Save button to lock in your changes."></i></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RequiredDate" class="control-label">Required Date  <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Change the Required Date of this Project, and use the Save button to lock in your changes."></i></label>
+                    <input asp-for="RequiredDate" type="date" min=@ViewBag.Today class="form-control" id="projectRequiredDate" />
+                <span asp-validation-for="RequiredDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                    <label asp-for="Description" class="control-label">Description  <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Change the Description of this Project, and use the Save button to lock in your changes."></i></label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group text-end">
+        <input type="submit" value="Save" class="btn btn-sm btn-primary" />
+        <a class="btn btn-sm btn-danger" asp-controller="Projects" asp-action="Index">Cancel <i class="bi bi-exclamation-diamond" data-bs-toggle="tooltip" data-bs-placement="right" title="Will not save changes to Name, Description, or Required Date. Return to Project List."></i></a>
+    </div>
+    </form>
+</div>
+
+<hr class="dashboard-line" />
+
+<div class="table-responsive-sm">
+    <div class="row">
+        <div class="col">
+            <h3>Project Tasks</h3>
+        </div>
+        <div class="col text-end">
+            <a class="btn btn-sm btn-color" asp-controller="Tasks" asp-action="CreateProjectTask" asp-route-ProjectID="@Model.ID">Add a Task <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Adds a new Task to this Project."></i></a>
+        </div>
+    </div>
+    <table class="table table-sm table-color rounded-3 overflow-hidden table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th></th>
+                <th>
+                    Description
+                </th>
+                <th></th>
+                <th>
+                    Category
+                </th>
+                <th class="text-center" colspan="2">
+                    Required Date
+                </th>
+                <th class="text-center" colspan="2">
+                    Is Complete?
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.Task != null)
+            {
+                @foreach (var Task in ViewBag.Task)
+                {
+                    if (Task.ProjectID == Model.ID)
+                    {
+                        TasksExist = true;
+
+                        if (!Task.IsComplete)
+                        {
+                            <tr>
+                                <td colspan="2">
+                                    @Task.Name
+                                </td>
+                                <td colspan="2">
+                                    @Task.Description
+                                </td>
+                                <td class="text-center">
+                                    @Task.CategoryName
+                                </td>
+                                <td class="text-center" colspan="2">
+                                    @Task.RequiredDate?.ToShortDateString()
+                                </td>
+                                @if (Task.IsComplete == false)
+                                {
+                                    <td class="text-center" colspan="2">
+                                        @{
+                                            var url = Url.Action("MarkProjectTaskComplete", "Projects", new { @Task.Id }, null);
+                                        }
+                                        @Html.CheckBox("checkbox" , new { onclick="window.location = '" + url + "'"})
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="text-center" colspan="2">
+                                        @{
+                                            var url = Url.Action("MarkProjectTaskUnComplete", "Projects", new { @Task.Id }, null);
+                                        }
+                                        @Html.CheckBox("checkbox" , true, new { onclick="window.location = '" + url + "'"})
+                                    </td>
+                                }
+                                <td class="text-center" colspan="3">
+                                    <a class="btn btn-sm btn-primary" asp-controller="Tasks" asp-action="EditProjectTask" asp-route-id="@Task.Id">Edit</a>
+                                    <a class="btn btn-sm btn-danger" asp-action="RemoveTask" asp-route-taskId="@Task.Id" asp-route-projectID="@Model.ID">Remove <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Removes Task from this Project, but does not delete it."></i></a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            }
+            @if (ViewBag.Task != null)
+            {
+                @foreach (var Task in ViewBag.Task)
+                {
+                    if (Task.ProjectID == Model.ID)
+                    {
+                        TasksExist = true;
+
+                        if (Task.IsComplete)
+                        {
+                            <tr>
+                                <td colspan="2">
+                                    @Task.Name
+                                </td>
+                                <td colspan="2">
+                                    @Task.Description
+                                </td>
+                                <td class="text-center">
+                                    @Task.CategoryName
+                                </td>
+                                <td class="text-center" colspan="2">
+                                    @Task.RequiredDate?.ToShortDateString()
+                                </td>
+                                @if (Task.IsComplete == false)
+                                {
+                                    <td class="text-center" colspan="2">
+                                        @{
+                                            var url = Url.Action("MarkProjectTaskComplete", "Projects", new { @Task.Id }, null);
+                                        }
+                                        @Html.CheckBox("checkbox" , new { onclick="window.location = '" + url + "'"})
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="text-center" colspan="2">
+                                        @{
+                                            var url = Url.Action("MarkProjectTaskUnComplete", "Projects", new { @Task.Id }, null);
+                                        }
+                                        @Html.CheckBox("checkbox" , true, new { onclick="window.location = '" + url + "'"})
+                                    </td>
+                                }
+                                <td class="text-center" colspan="3">
+                                    <a class="btn btn-sm btn-primary" asp-controller="Tasks" asp-action="EditProjectTask" asp-route-id="@Task.Id">Edit</a>
+                                    <a class="btn btn-sm btn-danger" asp-action="RemoveTask" asp-route-taskId="@Task.Id" asp-route-projectID="@Model.ID">Remove <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Removes Task from this Project, but does not delete it."></i></a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            }
+            @if (!TasksExist)
+            {
+                <tr class="text-center">
+                    <td colspan="12"><h4><em>This Project has no Tasks. Use the button above or the lists below to add Tasks.</em></h4></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div><br />
+
+<hr class="dashboard-line" />
+
+<div class="container table-responsive-sm">
+    <div class="row">
+        <div class="col-md">
+            <h3>Favorite Tasks</h3>
+            <table class="table table-sm table-color rounded-3 overflow-hidden table-hover m-auto">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th></th>
+                        <th class="text-center">
+                            Category
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Task in ViewBag.Task)
+                    {
+                        if (Task.IsFavorite)
+                        {
+                            <tr>
+                                <td>
+                                    @Task.Name
+                                </td>
+                                <td colspan="2">
+                                    @Task.Description
+                                </td>
+                                <td class="text-center">
+                                    @Task.CategoryName
+                                </td>
+                                <td class="text-center">
+                                    <a class="btn btn-sm btn-primary" asp-controller="Tasks" asp-action="AddFavoriteTask" asp-route-taskID="@Task.Id" asp-route-projectID="@Model.ID">Add <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Uses this Task template to create a new Task for this Project."></i></a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table><br />
+        </div>
+        <div class="col-md">
+    <h3>Tasks not assigned to a Project</h3>
+    <table class="table table-sm table-color rounded-3 overflow-hidden table-hover m-auto">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Description
+                </th>
+                <th></th>
+                        <th class="text-center">
+                    Category
+                </th>
+                <th class="text-center">
+                    Required Date
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Task in ViewBag.Task)
+            {
+                if (Task.ProjectID == ViewBag.QuickProjectID && !Task.IsComplete && !Task.IsFavorite)
+                {
+                    <tr>
+                        <td>
+                            @Task.Name
+                        </td>
+                        <td colspan="2">
+                            @Task.Description
+                        </td>
+                                <td class="text-center">
+                            @Task.CategoryName
+                        </td>
+                                <td class="text-center">
+                                    @Task.RequiredDate?.ToShortDateString()
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-sm btn-primary" asp-action="AddTask" asp-route-taskId="@Task.Id" asp-route-projectID="@Model.ID">Add <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Adds this Task to the current Project."></i></a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

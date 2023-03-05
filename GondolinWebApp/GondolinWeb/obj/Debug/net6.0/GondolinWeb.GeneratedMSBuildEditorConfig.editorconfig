@@ -1,0 +1,216 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = GondolinWeb
+build_property.RootNamespace = GondolinWeb
+build_property.ProjectDir = c:\Users\Kandi Heart\Desktop\gondolin\gondolin\GondolinWebApp\GondolinWeb\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = c:\Users\Kandi Heart\Desktop\gondolin\gondolin\GondolinWebApp\GondolinWeb
+build_property._RazorSourceGeneratorDebug = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Projects/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcUHJvamVjdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Projects/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcUHJvamVjdHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Projects/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcUHJvamVjdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Projects/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcUHJvamVjdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Projects/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcUHJvamVjdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Projects/Report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcUHJvamVjdHNcUmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Shared/_DashboardProjectsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcU2hhcmVkXF9EYXNoYm9hcmRQcm9qZWN0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Shared/_DashboardTasksPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcU2hhcmVkXF9EYXNoYm9hcmRUYXNrc1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Shared/_GraphPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcU2hhcmVkXF9HcmFwaFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Shared/_QuickListCreatePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcU2hhcmVkXF9RdWlja0xpc3RDcmVhdGVQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Shared/_QuickListPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcU2hhcmVkXF9RdWlja0xpc3RQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Shared/_TasksList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcU2hhcmVkXF9UYXNrc0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Tasks/AddFavoriteTask.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcVGFza3NcQWRkRmF2b3JpdGVUYXNrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Tasks/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcVGFza3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Tasks/CreateCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcVGFza3NcQ3JlYXRlQ2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Tasks/CreateFavorite.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcVGFza3NcQ3JlYXRlRmF2b3JpdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Tasks/CreateProjectTask.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcVGFza3NcQ3JlYXRlUHJvamVjdFRhc2suY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Tasks/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcVGFza3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Tasks/DeleteCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcVGFza3NcRGVsZXRlQ2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Tasks/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcVGFza3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Tasks/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcVGFza3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Tasks/EditFavorite.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcVGFza3NcRWRpdEZhdm9yaXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Tasks/EditProjectTask.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcVGFza3NcRWRpdFByb2plY3RUYXNrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Tasks/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcVGFza3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Tasks/Report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcVGFza3NcUmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Application/Views/Tasks/_FavTasksIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQXBwbGljYXRpb25cVmlld3NcVGFza3NcX0ZhdlRhc2tzSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Identity/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUGVyc29uYWxEYXRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Views/Home/Faq.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGYXEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Views/Home/Team.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZWFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Kandi Heart/Desktop/gondolin/gondolin/GondolinWebApp/GondolinWeb/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-sheqmbouxb

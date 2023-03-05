@@ -1,0 +1,78 @@
+﻿@model GondolinWeb.Areas.Application.Models.Task
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Today = DateTime.Now;
+}
+
+<h1>Create a Task</h1>
+<hr class="dashboard-line" />
+
+@if(ViewBag.Project.Count == 0)
+{
+    <div class="container w-75 text-center">
+    <h2 class="text-center">There are no Active Projects to assign Tasks to</h2>
+        <h3 class="text-center">Please create a Project before creating Tasks</h3><br >
+    <a class="btn btn-warning" asp-controller="Projects" asp-action="Create">Create a Project</a>
+    <a class="btn btn-primary" asp-controller="Tasks" asp-action="Index">Return to Task Index</a>
+    <a class="btn btn-danger" asp-controller="Home" asp-action="Index">Return to Dashboard</a>
+    </div>
+}
+else
+{
+<div class="row">
+        <div class="col-md-4 m-auto">
+        <form asp-action="Create" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Name <small class="text-muted">*Required*</small></label>
+                <input asp-for="Name" class="form-control" required/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="Description" class="control-label">Description <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Add further notes if you would like."></i></label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label class="control-label">Category <small class="text-muted">*Required*</small> <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Select a category to help filter later. "></i></label>
+                    <input asp-for="CategoryName" class="form-control" type="text" list="categories" />
+                   <span asp-validation-for="CategoryName" class="text-danger"></span>
+                    <datalist id="categories">
+                    <select  class="form-control">
+                        <option value="N/A">N/A</option>
+                        @foreach (var category in ViewBag.Category)
+                        {
+                            <option value="@category.Name">@category.Name</option>
+                        }
+                    </select>
+                    </datalist>
+            </div>
+
+            <div class="form-group">
+                    <label class="control-label">Project <small class="text-muted">*Required*</small>  <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Select a Project to add this Task to."></i></label>
+                <select asp-for="ProjectID" class="form-control">
+                        <option value="0">N/A</option>
+                    @foreach (var project in ViewBag.Project){
+                        <option value="@project.ID">@project.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="RequiredDate" class="control-label"> Required By <small class="text-muted">*Required*</small></label>
+                    <input asp-for="RequiredDate" input type="date" min=@ViewBag.Today class="form-control" required />
+                <span asp-validation-for="RequiredDate" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <a class="btn btn-danger" asp-controller="Tasks" asp-action="Index">Cancel <i class="bi bi-exclamation-diamond" data-bs-toggle="tooltip" data-bs-placement="right" title="Will not save changes. Return to Task List."></i></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

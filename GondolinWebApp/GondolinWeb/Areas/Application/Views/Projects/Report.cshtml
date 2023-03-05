@@ -1,0 +1,135 @@
+﻿@model GondolinWeb.Areas.Application.Models.Project
+@using GondolinWeb.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject UserManager<ApplicationUser> userManager;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Application";
+    ApplicationUser user = await userManager.GetUserAsync(User);
+
+}
+
+<h1>Project Report</h1>
+<hr class="dashboard-line" />
+<div class="m-auto w-50 report-table">
+    
+    <dl class="row w-75 m-auto report-table-heading">
+        <dt class="col-sm-4">
+            User
+        </dt>
+        <dd class="col-sm-6">
+            @ViewBag.User
+        </dd>
+        <dt class="col-sm-4">
+            Project Name
+        </dt>
+        <dd class="col-sm-6 text-uppercase">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.RequiredDate)
+        </dt>
+        <dd class="col-sm-6">
+            @Model.RequiredDate?.ToShortDateString()
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+        <dd class="col-sm-6">
+            @Model.CreationDate.ToShortDateString()
+        </dd>
+    </dl><br />
+
+    <div class="col-sm-12">
+        @{
+            double progress = ViewBag.Progress;
+            progress = progress * 100;
+        }
+        <div id="progressBar" class="progress" style="width: 100%; background-color: darkred;">
+            @if(progress == 0)
+            {
+                <div id="progressBar" class="progress m-auto" style="background-color: darkred; color: white">0%</div>
+            }
+            <div id="progressBar" class="progress-bar" role="progressbar" aria - valuemin="0" aria - valuemax="100" style="width: @progress%; background-color: green;">@progress%</div>
+        </div>
+    </div>
+    <h4 class="col-sm-4">
+        Completion Progress
+    </h4>
+    <br />
+    <h4 class="text-center">
+        Assigned Tasks
+    </h4>
+    <dl class="row w-75 m-auto report-table-card">
+        <dt><br /></dt>
+        @if (ViewBag.Tasks != null)
+        {
+            int count = 0;
+            @if (count > 0)
+            {
+                <dt><br /></dt>
+                <hr class="w-75 m-auto" />
+                <dt><br /></dt>
+            }
+            @foreach (var Task in ViewBag.Tasks)
+            {
+                if (Task.ProjectID == Model.ID)
+                {
+                    @if (count > 0)
+                    {
+                        <dt><br /></dt>
+                        <hr class="w-75 m-auto" />
+                        <dt><br /></dt>
+                    }
+                    count++;
+                    <dt class="col-sm-4 ps-5">
+                        Name
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Task.Name
+                    </dd>
+                    <dt class="col-sm-4 ps-5">
+                        Complete
+                    </dt>
+
+                    @if (Task.IsComplete)
+                    {
+                        <dd class="col-sm-6">
+                            Yes
+                        </dd>
+                    }
+                    else
+                    {
+                        <dd class="col-sm-6">
+                            No
+                        </dd>
+                    }
+                    <dt class="col-sm-4 ps-5">
+                        Date Due
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Task.RequiredDate?.ToShortDateString()
+                    </dd>
+                }
+            }
+            if (count == 0){
+                <dt>No Tasks Assigned</dt>
+            }
+            <dt><br /></dt>
+        }
+    </dl>
+    <br />
+    <div class="text-end">
+        <a class="btn btn-sm btn-primary" asp-action="Index">Back to Project List</a>
+        <a class="btn btn-sm btn-color" asp-controller="Home" asp-action="Index">Dashboard</a>
+    </div>
+</div>
+<br />

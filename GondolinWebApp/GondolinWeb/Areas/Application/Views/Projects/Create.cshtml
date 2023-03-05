@@ -1,0 +1,68 @@
+﻿@model GondolinWeb.Areas.Application.Models.Project
+@using GondolinWeb.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject UserManager<ApplicationUser> userManager;
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Application";
+    ApplicationUser user = await userManager.GetUserAsync(User);
+}
+
+<h1>Create a Project</h1>
+<hr class="dashboard-line" />
+
+<div class="row">
+    <div class="col-md-4 m-auto">
+        <form asp-action="Create" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Name <small class="text-muted">*Required*</small></label>
+                <input asp-for="Name" class="form-control"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div><br />
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Description <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Add further notes if you would like."></i></label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div><br />
+            <div class="form-group">
+                <label asp-for="RequiredDate" class="control-label">Required Date <small class="text-muted">*Required*</small></label>
+                <input asp-for="RequiredDate" min=@ViewBag.Today type="date" class="form-control" required />
+                <span asp-validation-for="RequiredDate" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Create
+                </button>
+                <a class="btn btn-danger" asp-controller="Projects" asp-action="Index">Cancel <i class="bi bi-exclamation-diamond" data-bs-toggle="tooltip" data-bs-placement="right" title="Will not save changes. Return to Project List."></i></a>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Project is being Created.</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Would you like to assign tasks to the project?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-secondary" value="IndexCreate" name="submitbutton">I'm Done</button>
+                                <button type="submit" class="btn btn-primary" value="AddTasksCreate" name="submitbutton">Add Tasks</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    }

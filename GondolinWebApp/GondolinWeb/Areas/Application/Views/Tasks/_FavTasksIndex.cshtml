@@ -1,0 +1,58 @@
+﻿@using GondolinWeb.Areas.Application.Models
+@model dynamic
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<div class="row">
+    <div class="col">
+        <h3>
+            Favorite Tasks <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="General Task templates which can be added to any Project."></i>
+        </h3>
+    </div>
+    <div class="col text-end">
+        <a class="btn btn-sm btn-color" asp-action="CreateFavorite">Create New Favorite Task</a>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-sm table-color rounded-3 overflow-hidden table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Description
+                </th>
+                <th></th>
+                <th class="text-center">
+                    Category
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (GondolinWeb.Areas.Application.Models.Task item in Model.FavTasks)
+            {
+                if (item.IsFavorite)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td colspan="2">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.CategoryName)
+                        </td>
+                        <td colspan="2" class="text-center">
+                            <a class="btn btn-sm btn-primary" asp-action="EditFavorite" asp-route-id="@item.Id">Edit</a>
+                            <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

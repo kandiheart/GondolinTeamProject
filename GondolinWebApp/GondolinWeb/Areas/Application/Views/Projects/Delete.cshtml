@@ -1,0 +1,51 @@
+﻿@model GondolinWeb.Areas.Application.Models.Project
+@using GondolinWeb.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject UserManager<ApplicationUser> userManager;
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Application";
+    ApplicationUser user = await userManager.GetUserAsync(User);
+
+}
+
+<h1>Delete Confirmation</h1>
+
+<h3 class="text-center">Are you sure you want to delete this project?</h3>
+<div class="m-auto w-50 delete-table">
+    <dl class="row">
+        <dt class="col-sm-4 ps-4">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10 ps-5">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-4 ps-4">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10 ps-5">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-4 ps-4">
+            @Html.DisplayNameFor(model => model.RequiredDate)
+        </dt>
+        <dd class="col-sm-10 ps-5">
+            @Model.RequiredDate?.ToShortDateString()
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        @if (ViewBag.IsTasksComplete == true)
+        {
+            <input type="submit" id="projectDelete" value="Delete" class="btn btn-danger" />
+        }
+        else
+        {
+            <label style="color: red;" class="text-center">*All Tasks must be Complete or Removed to delete Projects</label><br />
+            <input type="submit" id="projectDelete" disabled value="Delete" class="btn btn-danger" />
+        }
+
+        <a class="btn btn-warning" asp-controller="Projects" asp-action="Index">Cancel <i class="bi bi-exclamation-diamond" data-bs-toggle="tooltip" data-bs-placement="right" title="Will not delete Project. Return to Project List."></i></a>
+    </form>
+</div>

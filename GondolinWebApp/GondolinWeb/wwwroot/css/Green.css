@@ -1,0 +1,75 @@
+﻿body {
+    background: radial-gradient(circle at 100%, #F1FAEE, #F1FAEE 50%, #A8DADC 75%, #457B9D 90%) !important;
+}
+
+.table a {
+    text-decoration: none;
+    color: lightseagreen;
+    text-shadow: .7px .7px black;
+}
+
+.filter-heading {
+    color: indianred !important;
+}
+
+.table-color {
+    --bs-table-bg: #d1e7dd;
+    --bs-table-striped-bg: #c7dbd2;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #bcd0c7;
+    --bs-table-active-color: #000;
+    --bs-table-hover-bg: #c1d6cc;
+    --bs-table-hover-color: #000;
+    color: #000;
+    border-color: #bcd0c7;
+}
+
+form, .delete-table, .report-table {
+    padding: 10px;
+    background: #d1e7dd;
+    color: #000;
+    border-radius: 5px;
+    border: 1px solid green;
+}
+
+.report-table-card {
+    border: 1px solid green;
+}
+
+.delete-table form {
+    border: none !important;
+    margin-top: -15px;
+}
+
+#QuickCreate {
+    border: none !important;
+}
+
+#logoutForm {
+    background: none;
+    padding: 0;
+    border: none;
+}
+
+.dropdown-content {
+    background-color: #d1e7dd;
+}
+
+    .dropdown-content a {
+        color: #000 !important;
+    }
+
+        .dropdown-content a:hover {
+            background-color: #c1d6cc;
+        }
+
+.btn-color, .dropbtn {
+    color: #fff !important;
+    background-color: #198754;
+    border-color: #198754;
+    text-shadow: .7px .7px black;
+}
+
+    .dropbtn:hover, .dropbtn:focus, .btn-color:hover, .btn-color:focus {
+        background-color: #2980B9;
+    }

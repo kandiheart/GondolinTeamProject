@@ -1,0 +1,184 @@
+﻿@using GondolinWeb.Areas.Application.Models
+@model dynamic
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/TableStyles.css" asp-append-version="true" />
+</head>
+
+<h1>Task Lists <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Organize and track your Tasks here."></i></h1>
+<hr class="dashboard-line" />
+
+<div class="table-responsive-sm">
+    <div class="row">
+        <div class="col">
+            <h3>
+                All Tasks <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="All Tasks you have created which have not been archived."></i>
+            </h3>
+        </div>
+        <div class="col text-end">
+            <a class="btn btn-sm btn-color" asp-action="Create">Create New Task</a>
+        </div>
+    </div>
+    <table class="table table-sm table-color rounded-3 overflow-hidden table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <a class="filter-heading" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">Name</a>
+                </th>
+                <th>
+                    Description
+                </th>
+                <th class="text-center">
+                    <a class="filter-heading" asp-action="Index" asp-route-sortOrder="@ViewData["CatSortParm"]">Category</a>
+                </th>
+                <th class="text-center">
+                    <a class="filter-heading" asp-action="Index" asp-route-sortOrder="@ViewData["ProjSortParm"]">Project <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Click below to go to a Task's assigned Project."></i></a>
+                </th>
+                <th class="text-center">
+                    <a class="filter-heading" asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">Required Date</a>
+                </th>
+                <th class="text-center">
+                    Is Complete?
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (GondolinWeb.Areas.Application.Models.Task item in Model.TaskList)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Tasks" asp-action="Report" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.CategoryName)
+                    </td>
+                    @if (item.ProjectID != ViewBag.UserQuickProject)
+                    {
+                        @foreach (var project in ViewBag.Project)
+                        {
+                            @if (item.ProjectID == project.ID)
+                            {
+                                <td class="text-center">
+                                    <a asp-controller="Projects" asp-action="Edit" asp-route-id="@item.ProjectID">@project.Name</a>
+                                </td>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <td class="text-center">Not Assigned</td>
+                    }
+                    <td class="text-center">
+                        @item.RequiredDate?.ToShortDateString()
+                    </td>
+                    <td class="text-center">
+                        @{
+                            var url = Url.Action("IsCompleteState", "Tasks", new { item.Id }, null);
+                        }
+                        @Html.CheckBoxFor(modelItem => item.IsComplete , new { onclick="window.location = '" + url + "'"})
+                    </td>
+                    <td hidden>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-secondary" asp-action="Report" asp-route-id="@item.Id">Report</a>
+                        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    @{
+        var prevDisabled = !Model.TaskList.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.TaskList.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.TaskList.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.TaskList.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+
+</div>
+<br />
+<hr class="dashboard-line" />
+<br />
+
+<div class="d-flex flex-md-row justify-content-around flex-column">
+
+    <div class="container">
+        @await Html.PartialAsync("~/Areas/Application/Views/Tasks/_FavTasksIndex.cshtml")
+    </div>
+
+    <div class="container w-75">
+        <div class="row">
+            <div class="col-md">
+                <h3>
+                    Task Categories <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Categories which can be assigned to Tasks for filtering purposes."></i>
+                </h3>
+            </div>
+            <div class="col-sm text-end">
+                <a class="btn btn-sm btn-color" asp-action="CreateCategory">Create Category</a>
+            </div>
+        </div>
+            <div class="table-responsive">
+                <table class="table table-sm table-color rounded-3 overflow-hidden table-hover">
+                    <thead>
+                        <tr>
+                            <th class="ps-4">
+                                Name
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var category in ViewBag.UserCategories)
+                        {
+                            <tr>
+                            <td colspan="1" class="ps-4">
+                                    @category.Name
+                                </td>
+                                @if (category.Id != 0)
+                                {
+                                    <td class="text-center">
+                                        <a class="btn btn-sm btn-danger" asp-action="DeleteCategory" asp-route-id="@category.Id">Delete</a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

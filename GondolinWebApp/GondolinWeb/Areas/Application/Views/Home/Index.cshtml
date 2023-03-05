@@ -1,0 +1,74 @@
+﻿@using GondolinWeb.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject UserManager<ApplicationUser> userManager;
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Application";
+    ApplicationUser user = await userManager.GetUserAsync(User);
+}
+
+
+<div>
+    <div class="row">
+        <div class="col">
+            <h1>Dashboard <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Manage your Projects and Tasks here."></i></h1>
+        </div>
+        <div class="col text-end">
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Change Theme <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Change the colors of tables and buttons, for better readability."></i></button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a asp-area="Application" asp-controller="Home" asp-action="GreenTheme">Default Theme</a>
+                    <a asp-area="Application" asp-controller="Home" asp-action="DarkTheme">Dark Theme</a>
+                    <a asp-area="Application" asp-controller="Home" asp-action="LightTheme">Light Theme</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="dashboard-line" />
+    <h2 class="text-center"><strong>Hello, @user.FirstName!</strong>&nbsp;&nbsp;What would you like to do today?</h2>
+        <hr class="dashboard-line" />
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <div class="col">
+                <h3>
+                    Current Projects <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Click on Project Name to manage a Project."></i>
+                </h3>
+            </div>
+            <div class="col text-end">
+                <a class="btn btn-sm btn-color" asp-controller="Projects" asp-action="Create">Create New Project</a>
+            </div>
+        </div>
+        @await Html.PartialAsync("~/Areas/Application/Views/Shared/_DashboardProjectsPartial.cshtml", user.Projects )
+    </div>
+
+    <div class="col">
+        <div class="row">
+            <div class="col">
+                <h3>Outstanding Tasks <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Click on Task Name to go to that Task's Project."></i></h3>
+            </div>
+            <div class="col text-end">
+                <a class="btn btn-sm btn-color" asp-controller="Tasks" asp-action="Create">Create New Task</a>
+            </div>
+        </div>
+        
+        @await Html.PartialAsync("~/Areas/Application/Views/Shared/_DashboardTasksPartial.cshtml", user.Tasks )
+    </div>
+</div><br /><br />
+
+
+<hr class="dashboard-line" />
+<div id="quicklist-container" class="container m-auto w-75">
+    <h3 class="text-center">QuickList <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="A simple To-Do List with Tasks that are not in any Project."></i></h3>
+        <div id="quickList"> </div>
+        
+</div><br /><br />
+
+@section Scripts{
+        <script>
+        $('#quickList').load('@Url.Action("QuickList", "Tasks")');
+        </script>
+}

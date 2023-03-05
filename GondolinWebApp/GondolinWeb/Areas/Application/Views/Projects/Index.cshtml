@@ -1,0 +1,95 @@
+﻿@model PaginatedList<GondolinWeb.Areas.Application.Models.Project>
+@using GondolinWeb.Areas.Application.Models;
+@using GondolinWeb.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject UserManager<ApplicationUser> userManager;
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Application";
+    ApplicationUser user = await userManager.GetUserAsync(User);
+}
+
+<script>
+    function IsComplete(isComplete) {
+        if (isComplete == false) {
+            return '<input type="checkbox" onclick = "return false;" />';
+        }
+
+        return '<input type="checkbox" onclick = "return false;" checked/>';
+    }
+</script>
+
+<h1>Project List <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Organize and track your Projects here."></i></h1>
+<hr class="dashboard-line" />
+<div class="row">
+    <div class="col">
+        <h3>Active Projects <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="All Projects you have created which have not been archived."></i></h3>
+    </div>
+    <div class="col text-end">
+        <a class="btn btn-sm btn-color" asp-action="Create">Create New Project</a>
+    </div>
+</div>
+
+<div class="table-responsive">
+<table class="table table-sm table-color rounded-3 overflow-hidden table-hover">
+    <thead>
+        <tr>
+            <th>
+                <a class="filter-heading" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.FirstOrDefault().Name)</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Description)
+            </th>
+            <th class="text-center">
+                    <a class="filter-heading" asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model => model.FirstOrDefault().RequiredDate)</a>
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                        <a asp-controller="Projects" asp-action="Report" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Name)</a>
+                </td>
+                <td style="max-width:200px">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="text-center">
+                    @item.RequiredDate?.ToShortDateString()
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-color" asp-controller="Tasks" asp-action="CreateProjectTask" asp-route-ProjectID="@item.ID">Add a Task <i class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Adds a new Task to this Project."></i></a>
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-secondary" asp-action="Report" asp-route-id="@item.ID">Report</a>
+                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+</div>

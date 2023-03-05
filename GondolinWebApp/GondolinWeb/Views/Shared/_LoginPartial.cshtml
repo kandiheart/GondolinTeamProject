@@ -1,0 +1,67 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using GondolinWeb.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav flex-grow-1">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="HomeSite">Dashboard</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Project
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" asp-area="Application" asp-controller="Projects" asp-action="Index">All Projects</a>
+                <a class="dropdown-item" asp-area="Application" asp-controller="Projects" asp-action="Create">Create a Project</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Task
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" asp-area="Application" asp-controller="Tasks" asp-action="Index">All Tasks</a>
+                <a class="dropdown-item" asp-area="Application" asp-controller="Tasks" asp-action="Create">Create a Task</a>
+                <a class="dropdown-item" asp-area="Application" asp-controller="Tasks" asp-action="CreateFavorite">Create a Favorite Task</a>
+                <a class="dropdown-item" asp-area="Application" asp-controller="Tasks" asp-action="CreateCategory">Create a Task Category</a>
+            </div>
+        </li>
+        <!--<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Change Theme
+                </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" asp-area="Application" asp-controller="Home" asp-action="GreenTheme">Default Theme</a>
+                    <a class="dropdown-item" asp-area="Application" asp-controller="Home" asp-action="DarkTheme">Dark Theme</a>
+                    </div>
+            </li>-->
+    }
+</ul>
+<ul class="navbar-nav">
+@*If the user is signed in the nav bar will show links for user administatration items*@
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Manage Profile</a>
+    </li>
+        <li class="nav-item">
+            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit" class="nav-link btn btn-link">Logout</button>
+        </form>
+    </li>
+}
+@*If the user is NOT signed in, links to registration and login will be desiplayed in the nav bar.*@
+else
+{
+    <li class="nav-item">
+        <a class="nav-link" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+}
+</ul>
